@@ -11,7 +11,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ##Project Description
 
-This is a red wine data analysis project. In this project, we analyse what chemical feature impacts the quality of the red wine.
+This is a red wine data analysis project. In this project, we analyse what 
+chemical feature impacts the quality of the red wine.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, packages}
 library(ggcorrplot)
@@ -53,52 +54,221 @@ The summary statistics of the data are as follows:
 summary(data)
 attach(data)
 ```
-We observe that there are 11 characteristics which effect the quality. We will perform analysis to 
+We observe that there are 11 characteristics which effect the quality. 
+We will perform analysis to 
 # Univariate Plots Section
+
+###Quality Analysis
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
+ 
 summary(data$quality)
-ggplot(data, aes(x = factor(data$quality))) + geom_bar()+labs(x = 'Quality', y = 'Number of observations')+ggtitle("Quality Analysis")
-summary(data$pH)
-ggplot(data, aes(x = (data$pH))) + geom_histogram()+labs(x = 'pH', y = 'Number of observations')+ggtitle("pH Analysis")
-summary(data$fixed.acidity)
-ggplot(data, aes(x = (data$fixed.acidity))) + geom_histogram()+labs(x = 'Fixed Acidity', y = 'Number of observations')+ggtitle("Fixed Acidity Analysis")
-summary(data$volatile.acidity)
-ggplot(data, aes(x = (data$volatile.acidity))) + geom_histogram()+labs(x = 'Volatile Acidity', y = 'Number of observations')+ggtitle("Volatile Acidity Analysis")
-ggplot(data, aes(x = (data$volatile.acidity))) + geom_histogram()+xlim(0.1,1)+labs(x = 'Volatile Acidity', y = 'Number of observations')+ggtitle("Volatile Acidity Analysis")
-summary(data$citric.acid)
-ggplot(data, aes(x = (data$citric.acid))) + geom_histogram()+labs(x = 'Citric Acid', y = 'Number of observations')+ggtitle("Citric Acid Analysis")
-summary(data$density)
-ggplot(data, aes(x = (data$density))) + stat_count(width=0.0005)+labs(x = 'density', y = 'Number of observations')+ggtitle("Density Analysis")
-summary(data$chlorides)
-ggplot(data, aes(x = (data$chlorides))) + stat_count(width=0.005)+labs(x = 'Chlorides', y = 'Number of observations')+ggtitle("Chlorides Analysis")
-ggplot(data, aes(x = (data$chlorides))) + stat_count(width=0.005)+xlim(0.05,0.25)+labs(x = 'Chlorides', y = 'Number of observations')+ggtitle("Chlorides Analysis")
-summary(data$residual.sugar)
-ggplot(data, aes(x = (data$residual.sugar))) + stat_count(width=0.5)+labs(x = 'Residual Sugar', y = 'Number of observations')+ggtitle("Residual Sugar Analysis")
-ggplot(data, aes(x = (data$residual.sugar))) + stat_count(width=0.5)+xlim(1,7.5)+labs(x = 'Residual Sugar', y = 'Number of observations')+ggtitle("Residual Sugar Analysis")
-summary(data$free.sulfur.dioxide)
-ggplot(data, aes(x = (data$free.sulfur.dioxide))) + stat_count(width=1)+labs(x = 'Free sulphur dioxide', y = 'Number of observations')+ggtitle("Free sulphur dioxideAnalysis")
-ggplot(data, aes(x = (data$free.sulfur.dioxide))) + xlim(0,50)+stat_count(width=1)+labs(x = 'Free sulphur dioxide', y = 'Number of observations')+ggtitle("Free sulphur dioxideAnalysis")
-summary(data$total.sulfur.dioxide)
-ggplot(data, aes(x = (data$total.sulfur.dioxide))) + stat_count(width=1)+labs(x = 'Total sulphur dioxide', y = 'Number of observations')+ggtitle("Total sulphur dioxide Analysis")
-ggplot(data, aes(x = (data$total.sulfur.dioxide))) + stat_count(width=1)+xlim(0,150)+labs(x = 'Total sulphur dioxide', y = 'Number of observations')+ggtitle("Total sulphur dioxide Analysis")
-summary(data$sulphates)
-ggplot(data, aes(x = (data$sulphates))) + stat_count(width=0.05)+labs(x = 'Sulphates', y = 'Number of observations')+ggtitle("Sulphates Analysis")
-ggplot(data, aes(x = (data$sulphates))) + stat_count(width=0.05)+xlim(0.25,1.5)+labs(x = 'Sulphates', y = 'Number of observations')+ggtitle("Sulphates Analysis")
-summary(data$alcohol)
-ggplot(data, aes(x = (data$alcohol))) + stat_count(width=0.5)+labs(x = 'Alcohol', y = 'Number of observations')+ggtitle("Alcohol Analysis")
+ggplot(data, aes(x = factor(data$quality))) + geom_bar()+
+  labs(x = 'Quality', y = 'Number of observations')+ggtitle("Quality Analysis")
 ```
+
+From the above plot and summary we see, that mean of the quality is 5.6, 
+which means most of the observations are in quality levels obseved between
+5 and 6.
+
+###pH Analysis
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+summary(data$pH)
+ggplot(data, aes(x = (data$pH))) + geom_histogram()+
+  labs(x = 'pH', y = 'Number of observations')+ggtitle("pH Analysis")
+```
+
+In the above, we see that the mode and median are almost similar and the min and 
+max are also very close implying the pH values mostly range from 3-4 
+with median and mean at 3.3.
+
+###Fixed acidity Analysis
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+summary(data$fixed.acidity)
+ggplot(data, aes(x = (data$fixed.acidity))) + 
+  geom_histogram()+labs(x = 'Fixed Acidity', y = 'Number of observations')+
+  ggtitle("Fixed Acidity Analysis")
+```
+
+From above, we see the fixed acidity analysis.Must of the data has a 
+fixed acidity between 7-10.
+
+###Volatile Acidity Analysis
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+summary(data$volatile.acidity)
+ggplot(data, aes(x = (data$volatile.acidity))) + 
+  geom_histogram()+labs(x = 'Volatile Acidity', y = 'Number of observations')+
+  ggtitle("Volatile Acidity Analysis")
+```
+
+
+From the plot we see that most of the data, is focussed between 0.1 and 1.0. 
+For better visualization, we limit our x-axis , to observe the following figure.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(data, aes(x = (data$volatile.acidity))) + geom_histogram()+xlim(0.1,1)+
+  labs(x = 'Volatile Acidity', y = 'Number of observations')+
+  ggtitle("Volatile Acidity Analysis")
+```
+
+###Citric Acid Analysis
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+summary(data$citric.acid)
+ggplot(data, aes(x = (data$citric.acid))) + geom_histogram()+
+  labs(x = 'Citric Acid', y = 'Number of observations')+
+  ggtitle("Citric Acid Analysis")
+```
+
+From the summary and graph of citric acid, we obseve that the observations 
+are more in the range 0 and 0.5, which gives our mean and median around 
+0.27 and 0.26 respectively while still holding a max of 1
+
+###Density Analysis
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+summary(data$density)
+ggplot(data, aes(x = (data$density))) + geom_histogram()+
+  labs(x = 'density', y = 'Number of observations')+ggtitle("Density Analysis")
+```
+
+
+In the above density analysis plot we observe that the density focusses on 
+very minute value changes and is highly oriented between 0.992-1.003
+
+###Chlorides Analysis
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+summary(data$chlorides)
+ggplot(data, aes(x = (data$chlorides))) + stat_count(width=0.005)+
+  labs(x = 'Chlorides', y = 'Number of observations')+
+  ggtitle("Chlorides Analysis")
+```
+
+
+From the plot we see that most of the data, is focussed between 0.05 and 0.2. 
+For better visualization, we limit our x-axis , to observe the following figure.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(data, aes(x = (data$chlorides))) + geom_histogram()+
+  xlim(0.05,0.25)+labs(x = 'Chlorides', y = 'Number of observations')+
+  ggtitle("Chlorides Analysis")
+```
+
+###Residual Sugar Analysis
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+summary(data$residual.sugar)
+ggplot(data, aes(x = (data$residual.sugar))) + 
+  geom_histogram()+
+  labs(x = 'Residual Sugar', y = 'Number of observations')+
+  ggtitle("Residual Sugar Analysis")
+```
+
+From the plot we see that most of the data, is focussed between 1 and 8.
+For better visualization, we limit our x-axis , to observe the following figure. 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(data, aes(x = (data$residual.sugar))) + 
+  geom_histogram()+xlim(1,7.5)+
+  labs(x = 'Residual Sugar', y = 'Number of observations')+
+  ggtitle("Residual Sugar Analysis")
+
+```
+
+
+###Free sulphur dioxide Analysis
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+summary(data$free.sulfur.dioxide)
+ggplot(data, aes(x = (data$free.sulfur.dioxide))) + 
+  geom_histogram()+
+  labs(x = 'Free sulphur dioxide', y = 'Number of observations')+
+  ggtitle("Free sulphur dioxideAnalysis")
+```
+
+From the plot we see that most of the data, is focussed between 0 and 50. 
+For better visualization, we limit our x-axis , to observe the following figure. 
+Also we observe that the number of observations gradually decrease with 
+increase in free sulphur dioxide content.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+ggplot(data, aes(x = (data$free.sulfur.dioxide))) + xlim(0,50)+
+  geom_histogram()+
+  labs(x = 'Free sulphur dioxide', y = 'Number of observations')+
+  ggtitle("Free sulphur dioxideAnalysis")
+
+```
+
+
+###Total sulphur dioxide Analysis
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+summary(data$total.sulfur.dioxide)
+ggplot(data, aes(x = (data$total.sulfur.dioxide))) + geom_histogram()+
+  labs(x = 'Total sulphur dioxide', y = 'Number of observations')+
+  ggtitle("Total sulphur dioxide Analysis")
+
+```
+
+From the plot we see that most of the data, is focussed between 0 and 150. 
+For better visualization, we limit our x-axis , to observe the following figure. 
+Also we observe that the number of observations gradually decrease with 
+increase in total sulphur dioxide content.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+ggplot(data, aes(x = (data$total.sulfur.dioxide))) + geom_histogram()+
+  xlim(0,150)+labs(x = 'Total sulphur dioxide', y = 'Number of observations')+
+  ggtitle("Total sulphur dioxide Analysis")
+```
+
+###Sulphates Analysis
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+summary(data$sulphates)
+ggplot(data, aes(x = (data$sulphates))) + geom_histogram()+
+  labs(x = 'Sulphates', y = 'Number of observations')+
+  ggtitle("Sulphates Analysis")
+```
+
+From the plot we see that most of the data, is focussed between 0.25 and 1.1.
+For better visualization, we limit our x-axis , to observe the following figure. 
+Also we observe that the number of observations most of the observations are 
+between 0.5 and 0.75 with mean and median around 0.65 and 0.62 respectively
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+ggplot(data, aes(x = (data$sulphates))) + geom_histogram()+
+  xlim(0.25,1.5)+labs(x = 'Sulphates', y = 'Number of observations')+
+  ggtitle("Sulphates Analysis")
+
+```
+
+###Alcohol Analysis
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+summary(data$alcohol)
+ggplot(data, aes(x = (data$alcohol))) + stat_count(width=0.5)+
+  labs(x = 'Alcohol', y = 'Number of observations')+ggtitle("Alcohol Analysis")
+```
+
+In the above alcohol analysis plot we observe that the alcohol focusses on 
+values from 8-14 changes and is highly oriented between 9-12.
+
 
 
 # Univariate Analysis
 
-After performing initial and univariate analysis, now we answer some of the important questions that gives an idea of the data and helps us  make further analys
+After performing initial and univariate analysis, now we answer some of the 
+important questions that gives an idea of the data and helps us  make further 
+analys
 
 ### What is the structure of your dataset?
-The data consists of 1599 observations and 12 characteristics. 11 characteristic fearures and 1 impacting feauture Quality.
+
+The data consists of 1599 observations and 12 characteristics. 11 characteristic 
+fearures and 1 impacting feauture Quality.
 
 ### What is/are the main feature(s) of interest in your dataset?
+
 Quality is of main interest in the data. And also all the other 11 characters.
-### What other features in the dataset do you think will help support your investigation into your feature(s) of interest?
+
+
+### What other features in the dataset do you think will help support your 
+investigation into your feature(s) of interest?
 Most of the observations have:
 1.Quality of 5,6. Very minimum observations are seen with quality 3,7,8.
 2.Average pH is over 3 and 3.5
@@ -108,9 +278,11 @@ Most of the observations have:
 ### Did you create any new variables from existing variables in the dataset?
 No.
 
-### Of the features you investigated, were there any unusual distributions? Did you perform any operations on the data to tidy, adjust, or change the form of the data? If so, why did you do this?
-Volatile acid, chlorides,citric acid residual sugar, total sulpher dioxide, sulphates have very minimal observations as the value increases.
-X limits on these plots have been adjusted for better understanding.and visualization.
+### Of the features you investigated, were there any unusual distributions?                     Did you perform any operations on the data to tidy, adjust, or change the form                   of the data? If so, why did you do this?
+Volatile acid, chlorides,citric acid residual sugar, total sulpher dioxide, 
+sulphates have very minimal observations as the value increases.
+X limits on these plots have been adjusted for better understanding.and 
+visualization.
 
 # Bivariate Plots Section
 
@@ -118,14 +290,18 @@ Let us look at the correlation statistics
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 cor(data)
 ```
-Let's examine the correlation matrix with the correlative value. We know that the correlation values range from -1 to 1, with value towards 1 are positively correlated and towards -1 is negatively correlated
+Let's examine the correlation matrix with the correlative value.
+We know that the correlation values range from -1 to 1, with value
+towards 1 are positively correlated and towards -1 is negatively correlated
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-ggcorr(data,method = c("all.obs","spearman"),nbreaks=4,palette="PuOr",label=TRUE,name="spearman correlation coeff.(rho)",hjust=0.7,angle=-180,size=-2)
+ggcorr(data,method = c("all.obs","spearman"),
+       nbreaks=4,palette="PuOr",label=TRUE,name="spearman correlation coeff.(rho)",hjust=0.7,angle=-180,size=-2)
 ```
 
 Let us draw the correlation pairs figure and observe the graphs
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-ggpairs(data)+theme_light()+theme(panel.grid.major = element_line(colour = 'transparent'))
+ggpairs(data)+theme_light()+
+  theme(panel.grid.major = element_line(colour = 'transparent'))
 
 ```
 
@@ -135,14 +311,21 @@ cor(data$quality,data)
 ```
 
 
-We see that quality is positive correlated with alcohol,fixed acidity citric acid, residual sugar and sulphates and negatively correlated with volatile acidity, chlorides, free sulphur dioxide, total sulphur dioxide, desnity and pH.
+We see that quality is positive correlated with alcohol,fixed acidity 
+citric acid,residual sugar and sulphates and negatively correlated with 
+volatile acidity, chlorides, free sulphur dioxide, total sulphur dioxide,
+desnity and pH.
+
+
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(data, aes(x=factor(quality), y=data$fixed.acidity))+
   theme(plot.title = element_text(hjust = 0.5)) +  
   geom_jitter(alpha=1/10)+
   geom_boxplot(alpha=1/10,color='blue')+
   ggtitle("Analysis of Quality based on Fixed Axidity") +ylim(4,14)+
-  labs(x="Quality",y="Fixed Acidity")+stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
+  labs(x="Quality",y="Fixed Acidity")+
+  stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
 
 ggplot(data, aes(x=factor(quality), y=data$volatile.acidity))+
@@ -151,7 +334,8 @@ ggplot(data, aes(x=factor(quality), y=data$volatile.acidity))+
   geom_boxplot(alpha=1/10,color='blue')+
   ggtitle("Analysis of Quality based on Volatile Axidity") +
   ylim(0.2,1.4)+
-  labs(x="Quality",y="Volatile Acidity")+stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
+  labs(x="Quality",y="Volatile Acidity")+
+  stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
 
 
@@ -161,7 +345,8 @@ ggplot(data, aes(x=factor(quality), y=data$citric.acid))+
   geom_boxplot(alpha=1/10,color='blue')+
   ggtitle("Analysis of Quality based on Citric Acidity")+
   ylim(0.0,0.8)+
-  labs(x="Quality",y="Citric Acid")+stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
+  labs(x="Quality",y="Citric Acid")+
+  stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
 
 ggplot(data, aes(x=factor(quality), y=data$residual.sugar))+
@@ -170,7 +355,8 @@ ggplot(data, aes(x=factor(quality), y=data$residual.sugar))+
   geom_boxplot(alpha=1/10,color='blue')+
   ggtitle("Analysis of Quality based on Residual Sugar")+
   ylim(1,6)+
-  labs(x="Quality",y="Residual Sugar")+stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
+  labs(x="Quality",y="Residual Sugar")+
+  stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
 
 ggplot(data, aes(x=factor(quality), y=data$chlorides))+
@@ -179,7 +365,8 @@ ggplot(data, aes(x=factor(quality), y=data$chlorides))+
   geom_boxplot(alpha=1/10,color='blue')+
   ggtitle("Analysis of Quality based on Chlorides")+
   ylim(0.05,0.25)+
-  labs(x="Quality",y="Chlorides")+stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
+  labs(x="Quality",y="Chlorides")+
+  stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
 
 
@@ -189,7 +376,8 @@ ggplot(data, aes(x=factor(quality), y=data$sulphates))+
   geom_boxplot(alpha=1/10,color='blue')+
   ggtitle("Analysis of Quality based on Sulphates")+
   ylim(0.25,1.3)+
-  labs(x="Quality",y="Sulphates")+stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
+  labs(x="Quality",y="Sulphates")+
+  stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
 
 
@@ -199,7 +387,8 @@ ggplot(data, aes(x=factor(quality), y=data$density))+
   geom_jitter(alpha=1/10)+
   geom_boxplot(alpha=1/10,color='blue')+
   ggtitle("Analysis of Quality based on density")+
-  labs(x="Quality",y="Density")+stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
+  labs(x="Quality",y="Density")+
+  stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
 
 ggplot(data, aes(x=factor(quality), y=data$alcohol))+
@@ -208,7 +397,8 @@ ggplot(data, aes(x=factor(quality), y=data$alcohol))+
   geom_boxplot(alpha=1/10,color='blue')+
   ylim(8,14)+
   ggtitle("Analysis of Quality based on Alcohol")+
-  labs(x="Quality",y="Alcohol")+stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
+  labs(x="Quality",y="Alcohol")+
+  stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
 
 ggplot(data, aes(x=factor(quality), y=data$free.sulfur.dioxide))+
@@ -217,7 +407,8 @@ ggplot(data, aes(x=factor(quality), y=data$free.sulfur.dioxide))+
   geom_boxplot(alpha=1/10,color='blue')+
   ylim(0,50)+
   ggtitle("Analysis of Quality based on Free sulphur dioxide")+
-  labs(x="Quality",y="Free sulphur dioxide")+stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
+  labs(x="Quality",y="Free sulphur dioxide")+
+  stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
 
 ggplot(data, aes(x=factor(quality), y=data$total.sulfur.dioxide))+
@@ -226,7 +417,8 @@ ggplot(data, aes(x=factor(quality), y=data$total.sulfur.dioxide))+
   geom_boxplot(alpha=1/10,color='blue')+
   ylim(0,150)+
   ggtitle("Analysis of Quality based on Total sulphur dioxide")+
-  labs(x="Quality",y="Total sulphur dioxide")+stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
+  labs(x="Quality",y="Total sulphur dioxide")+
+  stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
 
 ggplot(data, aes(x=factor(quality), y=data$pH))+
@@ -234,7 +426,8 @@ ggplot(data, aes(x=factor(quality), y=data$pH))+
   geom_jitter(alpha=1/10)+
   geom_boxplot(alpha=1/10,color='blue')+
   ggtitle("Analysis of Quality based on pH")+
-  labs(x="Quality",y="pH")+stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
+  labs(x="Quality",y="pH")+
+  stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
 ```
 
@@ -242,31 +435,47 @@ Let us explore other correlations.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(data,aes(data$fixed.acidity, data$citric.acid))+ 
-  geom_jitter(alpha=0.2) +geom_smooth(method=lm)+theme_light()+theme(plot.title = element_text(hjust = 0.5))+
-  labs(x = 'Fixed acidity', y = 'Citric Acid')+ggtitle("Effect of Citric Acidity on Fixed Acidity")+theme(panel.grid.major = element_line(colour = 'transparent'))
+  geom_jitter(alpha=0.2) +geom_smooth(method=lm)+
+  theme_light()+theme(plot.title = element_text(hjust = 0.5))+
+  labs(x = 'Fixed acidity', y = 'Citric Acid')+
+  ggtitle("Effect of Citric Acidity on Fixed Acidity")+theme(panel.grid.major = element_line(colour = 'transparent'))
+
 ggplot(data,aes(data$fixed.acidity, data$pH))+ 
-  geom_jitter(alpha=0.2) +geom_smooth(method=lm)+theme_light()+theme(plot.title = element_text(hjust = 0.5))+
-  labs(x = 'Fixed acidity', y = 'pH')+ggtitle("Effect of Fixed Acidity on pH ")+theme(panel.grid.major = element_line(colour = 'transparent'))
+  geom_jitter(alpha=0.2) +geom_smooth(method=lm)+
+  theme_light()+theme(plot.title = element_text(hjust = 0.5))+
+  labs(x = 'Fixed acidity', y = 'pH')+ggtitle("Effect of Fixed Acidity on pH ")+
+  theme(panel.grid.major = element_line(colour = 'transparent'))
+
 ggplot(data,aes(data$fixed.acidity, data$density))+ 
-  geom_jitter(alpha=0.2) +geom_smooth(method=lm)+theme_light()+theme(plot.title = element_text(hjust = 0.5))+
-  labs(x = 'Fixed acidity', y = 'density')+ggtitle("Effect of Fixed Acidity on density ")+theme(panel.grid.major = element_line(colour = 'transparent'))
+  geom_jitter(alpha=0.2) +geom_smooth(method=lm)+theme_light()+
+  theme(plot.title = element_text(hjust = 0.5))+
+  labs(x = 'Fixed acidity', y = 'density')+
+  ggtitle("Effect of Fixed Acidity on density ")+
+  theme(panel.grid.major = element_line(colour = 'transparent'))
+
+
 ggplot(data,aes(data$free.sulfur.dioxide, data$total.sulfur.dioxide))+ 
-  geom_jitter(alpha=0.2) +geom_smooth(method=lm)+theme_light()+theme(plot.title = element_text(hjust = 0.5))+
-  labs(x = 'Free suplher dioxide', y = 'Total suplher dioxide')+ggtitle("Effect of Free suplher dioxide on Total suplher dioxide")+theme(panel.grid.major = element_line(colour = 'transparent'))
+  geom_jitter(alpha=0.2) +
+  geom_smooth(method=lm)+theme_light()+
+  theme(plot.title = element_text(hjust = 0.5))+
+  labs(x = 'Free suplher dioxide', y = 'Total suplher dioxide')+
+  ggtitle("Effect of Free suplher dioxide on Total suplher dioxide")+
+  theme(panel.grid.major = element_line(colour = 'transparent'))
 
 ```
 
 # Bivariate Analysis
 We have now observed the correlation and impact of other factors on quality.
 
-### Talk about some of the relationships you observed in this part of the investigation. How did the feature(s) of interest vary with other features in the dataset?
+### Talk about some of the relationships you observed in this part of the                investigation. How did the feature(s) of interest vary with other features in                    the dataset?
 
 We observe that Quality has:
-1.significant positive correlation with Fixed Acidity, Citric Acid,Sulphates and Alcohol
+1.significant positive correlation with Fixed Acidity, Citric Acid,Sulphates   
+and Alcohol
 2.No significant positive or negative relation with density and residual sugar.
 3.Significant negative correlation with chlorides and volatile acidity
 
-### Did you observe any interesting relationships between the other features \(not the main feature(s) of interest)?
+### Did you observe any interesting relationships between the other features                   \(not the main feature(s) of interest)?
 
 Density and citric acidity increase with fixed acidity whole pH decreases.
 Total Sulphur dioxide and free sulphur dioxide are linearly positive.
@@ -277,13 +486,13 @@ Quality increases with citric acid and decreases with volatile acidity
 
 # Multivariate Plots Section
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-ggplot(data,aes(pH,alcohol,color=factor(quality)))+
-  theme(plot.title = element_text(hjust = 0.5)) +
-  xlim(2.5,4)+
-  geom_jitter()+
-  theme_dark()+
-  scale_color_brewer(type="seq")+
-  ggtitle("Effect of pH and alcohol over quality")
+ggplot(data,aes(data$pH ,data$alcohol,color=factor(quality)))+
+ theme(plot.title = element_text(hjust = 0.5)) +
+xlim(2.5,4)+
+ geom_jitter()+
+theme_dark()+
+scale_color_brewer(type="seq")+
+ggtitle("Effect of pH and alcohol over quality")
 
 ggplot(data,aes(volatile.acidity,fixed.acidity,color=factor(quality)))+
   theme(plot.title = element_text(hjust = 0.5)) +
@@ -302,13 +511,14 @@ ggtitle("Effect of citric acidity and fixed acidity over quality")
 
 
 
-ggplot(data,aes(free.sulfur.dioxide,total.sulfur.dioxide,color=factor(quality)))+
+ggplot(data,aes(data$free.sulfur.dioxide,data$total.sulfur.dioxide,
+                color=factor(quality)))+
   theme(plot.title = element_text(hjust = 0.5)) +
   geom_jitter()+
   xlim(0,60)+ylim(0,160)+
   theme_dark()+
   scale_color_brewer(type="seq")+
-  ggtitle("Effect of free sulphu dioxide and total sulphur dioxide over quality")
+ggtitle("Effect of free sulphu dioxide and total sulphur dioxide over quality")
 
 
 ggplot(data,aes(pH,density,color=factor(quality)))+
@@ -339,7 +549,7 @@ ggplot(data,aes(alcohol,density,color=factor(quality)))+
 
 # Multivariate Analysis
 
-### Talk about some of the relationships you observed in this part of the \investigation. Were there features that strengthened each other in terms of \looking at your feature(s) of interest?
+### Talk about some of the relationships you observed in this part of the                 \investigation. Were there features that strengthened each other in terms of                  \looking at your feature(s) of interest?
 
 With increase in free and total sulphur dioxe, quality increases.
 Quality decreases with increase in volatile acidity and fixed acidity
@@ -368,13 +578,14 @@ ggplot(data,aes(alcohol,density,color=factor(quality)))+
 We see that high alcohol and low density gives good alcohol quality.
 ### Plot Two
 ```{r echo=FALSE, Plot_Two,message=FALSE, warning=FALSE}
-ggplot(data,aes(free.sulfur.dioxide,total.sulfur.dioxide,color=factor(quality)))+
+ggplot(data,aes(free.sulfur.dioxide,total.sulfur.dioxide,
+                color=factor(quality)))+
   theme(plot.title = element_text(hjust = 0.5)) +
   geom_jitter()+
   xlim(0,60)+ylim(0,160)+
   theme_dark()+
   scale_color_brewer(type="seq")+
-  ggtitle("Effect of free sulphu dioxide and total sulphur dioxide over quality")
+ggtitle("Effect of free sulphu dioxide and total sulphur dioxide over quality")
 
 ```
 
@@ -382,7 +593,8 @@ ggplot(data,aes(free.sulfur.dioxide,total.sulfur.dioxide,color=factor(quality)))
 
 ### Description Two
 
-From above we see that as total and free  sulphur dioxide increaseand quality increases, but low quantities of each gives good quality.
+From above we see that as total and free  sulphur dioxide increaseand quality
+increases, but low quantities of each gives good quality.
 
 ### Plot Three
 ```{r echo=FALSE, Plot_Three,message=FALSE, warning=FALSE}
@@ -392,7 +604,8 @@ ggplot(data, aes(x=factor(quality), y=data$alcohol))+
   geom_boxplot(alpha=1/10,color='blue')+
   ylim(8,14)+
   ggtitle("Analysis of Quality based on Alcohol")+
-  labs(x="Quality",y="Alcohol")+stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
+  labs(x="Quality",y="Alcohol")+
+  stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
 ```
 
@@ -404,15 +617,21 @@ We see that increase in alcohol increases quality.
 ------
 
 # Reflection
-Some analysis has been done to understand the impacting features on redwine dataquality.
-We understand how some features alone do not effect the quality. It is important to do a complete analysis before coming to conclusions. Some of the interesting findings made through our analysis:
+Some analysis has been done to understand the impacting features on redwine 
+dataquality.
+We understand how some features alone do not effect the quality. 
+It is important to do a complete analysis before coming to conclusions. 
+Some of the interesting findings made through our analysis:
 1.More than 60% of data have avergae quality 
-2.Free and total sulphur dioxide increase parallelly but lower quantities of these ensure good quality.
+2.Free and total sulphur dioxide increase parallelly but lower quantities of 
+these ensure good quality.
 3.High alcohol rate and low density increases quality.
  
-###What were some of the struggles that you went through?What went well? What was surprising? Make sure you include an insight intofuture work that could be done with the dataset
-I Struggled to understand the data set and analysis what plots can make better visualization.
+###What were some of the struggles that you went through?What went well?                       What was surprising? Make sure you include an insight intofuture work that                    could be done with the dataset
+I Struggled to understand the data set and analysis what plots can make better
+visualization.
 Although initially I faced difficulty, analysis went easy once  started working.
-Suprising is how most of the observations have average quality value and how it decreases with density.
+Suprising is how most of the observations have average quality value and how it 
+decreases with density.
 Statistical tests and analysis can be done to proove the analysis mathematically.
 
