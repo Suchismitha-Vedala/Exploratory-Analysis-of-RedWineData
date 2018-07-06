@@ -299,6 +299,8 @@ ggcorr(data,method = c("all.obs","spearman"),
 ```
 
 Let us draw the correlation pairs figure and observe the graphs
+
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 ggpairs(data)+theme_light()+
   theme(panel.grid.major = element_line(colour = 'transparent'))
@@ -327,6 +329,12 @@ ggplot(data, aes(x=factor(quality), y=data$fixed.acidity))+
   labs(x="Quality",y="Fixed Acidity")+
   stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
+```
+
+When analysis quality with fixed acidity, we see that most of the observations
+are with quality 5 and 6, and the mean among the box plot slightly increases with increase in quality 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 ggplot(data, aes(x=factor(quality), y=data$volatile.acidity))+
   theme(plot.title = element_text(hjust = 0.5)) +  
@@ -337,7 +345,12 @@ ggplot(data, aes(x=factor(quality), y=data$volatile.acidity))+
   labs(x="Quality",y="Volatile Acidity")+
   stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
+```
 
+When analysis quality with volatile acidity, we see that most of the observations
+are with quality 5 and 6, and the mean among the box plot gradually decreases with increase in quality 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 ggplot(data, aes(x=factor(quality), y=data$citric.acid))+
   theme(plot.title = element_text(hjust = 0.5)) +  
@@ -348,7 +361,12 @@ ggplot(data, aes(x=factor(quality), y=data$citric.acid))+
   labs(x="Quality",y="Citric Acid")+
   stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
+```
 
+When analysis quality with citric acid, we see that most of the observations
+are with quality 5 and 6, and the mean among the box plot  increases with increase in quality 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(data, aes(x=factor(quality), y=data$residual.sugar))+
   theme(plot.title = element_text(hjust = 0.5)) +  
   geom_jitter(alpha=1/10)+
@@ -358,7 +376,12 @@ ggplot(data, aes(x=factor(quality), y=data$residual.sugar))+
   labs(x="Quality",y="Residual Sugar")+
   stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
+```
 
+When analysis quality with residual sugar, we see that most of the observations
+are with quality 5 and 6, and the mean among the box plot alomost remains same across all the levels of quality 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(data, aes(x=factor(quality), y=data$chlorides))+
   theme(plot.title = element_text(hjust = 0.5)) +  
   geom_jitter(alpha=1/10)+
@@ -368,7 +391,12 @@ ggplot(data, aes(x=factor(quality), y=data$chlorides))+
   labs(x="Quality",y="Chlorides")+
   stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
+```
 
+When analysis quality with chlorides, we see that most of the observations
+are with quality 5 and 6, and the mean among the box plot slightly decreases with increase in quality 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 ggplot(data, aes(x=factor(quality), y=data$sulphates))+
   theme(plot.title = element_text(hjust = 0.5)) +  
@@ -379,7 +407,12 @@ ggplot(data, aes(x=factor(quality), y=data$sulphates))+
   labs(x="Quality",y="Sulphates")+
   stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
+```
 
+When analysis quality with sulphates, we see that most of the observations
+are with quality 5 and 6, and the mean among the box plot gradually increases with increase in quality 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 
 ggplot(data, aes(x=factor(quality), y=data$density))+
@@ -390,7 +423,12 @@ ggplot(data, aes(x=factor(quality), y=data$density))+
   labs(x="Quality",y="Density")+
   stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
+```
 
+When analysis quality with Density, we see that most of the observations
+are with quality 5 and 6, and the mean among the box plot slightly decreases with increase in quality 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(data, aes(x=factor(quality), y=data$alcohol))+
   theme(plot.title = element_text(hjust = 0.5)) +  
   geom_jitter(alpha=1/10)+
@@ -400,7 +438,12 @@ ggplot(data, aes(x=factor(quality), y=data$alcohol))+
   labs(x="Quality",y="Alcohol")+
   stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
+```
 
+When analysis quality with alcohol, we see that most of the observations
+are with quality 5 and 6, and the mean among the box plot  increases with increase in quality 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(data, aes(x=factor(quality), y=data$free.sulfur.dioxide))+
   theme(plot.title = element_text(hjust = 0.5)) +  
   geom_jitter(alpha=1/10)+
@@ -410,7 +453,12 @@ ggplot(data, aes(x=factor(quality), y=data$free.sulfur.dioxide))+
   labs(x="Quality",y="Free sulphur dioxide")+
   stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
+```
 
+When analysis quality with Free sulphur dioxide, we see that most of the observations
+are with quality 5 and 6, and the mean among the box plots when drawn a line forms like a bell curve.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(data, aes(x=factor(quality), y=data$total.sulfur.dioxide))+
   theme(plot.title = element_text(hjust = 0.5)) +  
   geom_jitter(alpha=1/10)+
@@ -420,7 +468,12 @@ ggplot(data, aes(x=factor(quality), y=data$total.sulfur.dioxide))+
   labs(x="Quality",y="Total sulphur dioxide")+
   stat_summary(fun.y="mean", geom="point", size=1, pch=16, color="red") +
   theme(panel.grid.major = element_line(colour = 'transparent'))
+```
 
+When analysis quality with total sulphur dioxide, we see that most of the observations
+are with quality 5 and 6, and the mean among the box plots when drawn a line forms like a bell curve.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(data, aes(x=factor(quality), y=data$pH))+
   theme(plot.title = element_text(hjust = 0.5)) +  
   geom_jitter(alpha=1/10)+
@@ -431,6 +484,10 @@ ggplot(data, aes(x=factor(quality), y=data$pH))+
   theme(panel.grid.major = element_line(colour = 'transparent'))
 ```
 
+When analysis quality with pH, we see that most of the observations
+are with quality 5 and 6, and the mean among the box plot slightly decreases with increase in quality 
+
+
 Let us explore other correlations.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
@@ -439,20 +496,33 @@ ggplot(data,aes(data$fixed.acidity, data$citric.acid))+
   theme_light()+theme(plot.title = element_text(hjust = 0.5))+
   labs(x = 'Fixed acidity', y = 'Citric Acid')+
   ggtitle("Effect of Citric Acidity on Fixed Acidity")+theme(panel.grid.major = element_line(colour = 'transparent'))
+```
 
+When analysing citri acidity with fixed acidity, we see that the plot forms a positive linear graph.
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(data,aes(data$fixed.acidity, data$pH))+ 
   geom_jitter(alpha=0.2) +geom_smooth(method=lm)+
   theme_light()+theme(plot.title = element_text(hjust = 0.5))+
   labs(x = 'Fixed acidity', y = 'pH')+ggtitle("Effect of Fixed Acidity on pH ")+
   theme(panel.grid.major = element_line(colour = 'transparent'))
+```
 
+When analysing pH with fixed acidity, we see that the plot forms a negative linear graph.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(data,aes(data$fixed.acidity, data$density))+ 
   geom_jitter(alpha=0.2) +geom_smooth(method=lm)+theme_light()+
   theme(plot.title = element_text(hjust = 0.5))+
   labs(x = 'Fixed acidity', y = 'density')+
   ggtitle("Effect of Fixed Acidity on density ")+
   theme(panel.grid.major = element_line(colour = 'transparent'))
+```
 
+When analysis density with fixed acidity, we see that the plot forms a positive linear graph.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 ggplot(data,aes(data$free.sulfur.dioxide, data$total.sulfur.dioxide))+ 
   geom_jitter(alpha=0.2) +
@@ -463,6 +533,10 @@ ggplot(data,aes(data$free.sulfur.dioxide, data$total.sulfur.dioxide))+
   theme(panel.grid.major = element_line(colour = 'transparent'))
 
 ```
+
+
+When analysis free sulphur dioxide with total sulphur dioxide, we see that most of the observations like at the lower end of the graph and the plot forms a positive linear graph.
+
 
 # Bivariate Analysis
 We have now observed the correlation and impact of other factors on quality.
@@ -493,14 +567,22 @@ xlim(2.5,4)+
 theme_dark()+
 scale_color_brewer(type="seq")+
 ggtitle("Effect of pH and alcohol over quality")
+```
 
+We see that observations are mostly around pH 3 and 3.5 and the ones with high quality are having density above 10 and most of the observations with quality 5 and 6 have density between 10-12
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(data,aes(volatile.acidity,fixed.acidity,color=factor(quality)))+
   theme(plot.title = element_text(hjust = 0.5)) +
   geom_jitter()+
   theme_dark()+
    scale_color_brewer(type="seq")+
   ggtitle("Effect of fixed acidity and volatile acidity over quality")
+```
 
+We see that observations have low voldatile acidity.The ones with quality between 5-8 have less thqn 0.5 volatile acidity and fixed acidity between 6-14.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(data,aes(citric.acid,fixed.acidity,color=factor(quality)))+
   theme(plot.title = element_text(hjust = 0.5)) +
   geom_jitter()+
@@ -508,7 +590,11 @@ ggplot(data,aes(citric.acid,fixed.acidity,color=factor(quality)))+
   theme_dark()+
   scale_color_brewer(type="seq")+
 ggtitle("Effect of citric acidity and fixed acidity over quality")
+```
 
+With increase in citric acid and fixed acidity, quality seems to increase and also, the ones with higher quality have citric acid gretaer than 0.3 and a fixed acidity greater than 5.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 
 ggplot(data,aes(data$free.sulfur.dioxide,data$total.sulfur.dioxide,
@@ -519,7 +605,11 @@ ggplot(data,aes(data$free.sulfur.dioxide,data$total.sulfur.dioxide,
   theme_dark()+
   scale_color_brewer(type="seq")+
 ggtitle("Effect of free sulphu dioxide and total sulphur dioxide over quality")
+```
 
+With increase in free sulphu dioxide and total sulphur dioxide, quality seems to increase.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 ggplot(data,aes(pH,density,color=factor(quality)))+
   theme(plot.title = element_text(hjust = 0.5)) +
@@ -527,7 +617,12 @@ ggplot(data,aes(pH,density,color=factor(quality)))+
   theme_dark()+
   scale_color_brewer(type="seq")+
 ggtitle("Effect of ph and density over quality")
+```
 
+Most of the data has densit around 0.995-1 while high quality observations have very low density.
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 ggplot(data,aes(citric.acid,volatile.acidity,color=factor(quality)))+
   theme(plot.title = element_text(hjust = 0.5)) +
@@ -536,7 +631,12 @@ ggplot(data,aes(citric.acid,volatile.acidity,color=factor(quality)))+
   theme_dark()+
   scale_color_brewer(type="seq")+
   ggtitle("Effect of citri acidity and volatile acidity over quality")
+```
 
+We observe high quality observations have very low citri acidity and volatile acidity
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 ggplot(data,aes(alcohol,density,color=factor(quality)))+
   theme(plot.title = element_text(hjust = 0.5)) +
@@ -546,6 +646,10 @@ ggplot(data,aes(alcohol,density,color=factor(quality)))+
   scale_color_brewer(type="seq")+
   ggtitle("Effect of density  and volatile alcohol over quality")
 ```
+
+Most of the data has densit around 0.995-1 while high quality observations have  low density and  alcohol content above 10.
+
+
 
 # Multivariate Analysis
 
